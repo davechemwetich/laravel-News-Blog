@@ -51,34 +51,50 @@ class PostResource extends Resource
                     ->required(),
                 Forms\Components\Toggle::make('active')
                     ->required(),
-                Forms\Components\DateTimePicker::make('published_at')
-                    ->required(),
+                Forms\Components\DateTimePicker::make('published_at'),
+                    // ->required(),
 
                 Forms\Components\Select::make('category_id')
                     ->multiple( )
                     ->relationship('categories', 'title')
                     ->required(),
                     
-                ])
-         
-            ]);
-    }
+                ])->columnSpan(8),
+
+
+//
+              
+            Forms\Components\Card::make()
+                 ->schema([
+            Forms\Components\FileUpload::make('thumbnail'),
+            Forms\Components\Select::make('categories')
+                ->multiple()
+                ->relationship('categories', 'title'),
+                         ])->columnSpan(4)
+                    ])->columns(12);
+                }
+ //
+
+
+
+
 
     public static function table(Table $table): Table
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('thumbnail'),
                 Tables\Columns\TextColumn::make('title'),
-                Tables\Columns\TextColumn::make('slug'),
-                Tables\Columns\TextColumn::make('thumbnail'),
-                Tables\Columns\TextColumn::make('body'),
+                // Tables\Columns\TextColumn::make('slug'),
+               
+                // Tables\Columns\TextColumn::make('body'),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('published_at')
                     ->dateTime(),
-                Tables\Columns\TextColumn::make('user.name'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
+                // Tables\Columns\TextColumn::make('user.name'),
+                // Tables\Columns\TextColumn::make('created_at')
+                //     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime(),
             ])
