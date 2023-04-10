@@ -31,4 +31,26 @@ class Post extends Model
 
 
 
+
+    public function shortBody($words = 30): string
+    {
+        return Str::words(strip_tags($this->body), $words);
+    }
+
+
+  public function getFormattedDate()
+    {
+        return $this->published_at->format('F jS Y');
+    }
+
+
+    public function getThumbnail()
+    {
+        if (str_starts_with($this->thumbnail, 'http')) {
+            return $this->thumbnail;
+        }
+
+        return '/storage/' . $this->thumbnail;
+    } 
+
 }

@@ -22,9 +22,9 @@ class PostController extends Controller
         $posts = Post::query()
         ->where('active', '=' , 1 )
         // ->where('active', '=', true)
-        ->whereDate('published_at', '<=', Carbon::now())
+        ->whereDate('published_at', '<', Carbon::now())
         ->orderBy('published_at' , 'desc')
-        ->paginate();
+        ->paginate(5);
         
 
         return view('home', compact('posts'));
