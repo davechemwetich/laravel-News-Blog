@@ -17,3 +17,5 @@ use App\Http\Controllers\PostController;
 
 Route::get('/', [PostController::class, 'home'])->name('home');
 // Route::get('/home', 'PostController@index')->name('home');
+
+Route::get('/{post:slug}', [PostController::class, 'show'])->name('view');
