@@ -41,6 +41,52 @@
     </header>
 
     <!-- Topic Nav -->
+    <div class="flex h-screen">
+        <nav class="bg-gray-800 text-white w-56 flex-none hidden lg:block">
+            <div class="p-4">
+                <a href="#" class="font-semibold text-xl">Logo</a>
+            </div>
+            <ul class="flex flex-col divide-y divide-gray-700">
+                <li class="px-4 py-2 hover:bg-gray-700">
+                    <a href="#">Home</a>
+                </li>
+                <li class="px-4 py-2 hover:bg-gray-700">
+                    <a href="#">About</a>
+                </li>
+                <li class="px-4 py-2 hover:bg-gray-700">
+                    <a href="#">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="w-full px-4 lg:px-8 py-8">
+            <!-- Your page content goes here -->
+        </div>
+    </div>
+
+    <!-- This is the mobile navigation menu -->
+    <nav class="bg-gray-800 text-white fixed bottom-0 left-0 right-0 z-50 lg:hidden" id="mobile-nav">
+        <ul class="flex flex-col divide-y divide-gray-700">
+            <li class="px-4 py-2 hover:bg-gray-700">
+                <a href="#">Home</a>
+            </li>
+            <li class="px-4 py-2 hover:bg-gray-700">
+                <a href="#">About</a>
+            </li>
+            <li class="px-4 py-2 hover:bg-gray-700">
+                <a href="#">Contact Us</a>
+            </li>
+        </ul>
+    </nav>
+
+    {{-- script  --}}
+    <script>
+        const toggleButton = document.getElementById('toggle-button');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        toggleButton.addEventListener('click', () => {
+            mobileNav.classList.toggle('hidden');
+        });
+    </script>
 
 
     <div class="container mx-auto flex flex-wrap py-6">
