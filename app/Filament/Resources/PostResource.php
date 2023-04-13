@@ -29,51 +29,58 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Card::make()
-                ->schema ([
-                    Forms\Components\Grid::make(2)
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                        ->required()
-                        ->maxLength(2048)
-                        ->reactive()
-                        ->afterStateUpdated(function (Closure $set, $state) {
-                            $set('slug', Str::slug($state));
-                        }),
-                    Forms\Components\TextInput::make('slug')
-                        ->required()
-                        ->maxLength(2048),
-                    ]),
-                  
-            
-                Forms\Components\FileUpload::make('thumbnail'),
-                    // ->maxLength(2048),
-                Forms\Components\RichEditor::make('body')
-                    ->required(),
-                Forms\Components\Toggle::make('active')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('published_at'),
-                    // ->required(),
-
-                Forms\Components\Select::make('category_id')
-                    ->multiple( )
-                    ->relationship('categories', 'title')
-                    ->required(),
-                    
-                ])->columnSpan(8),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->required()
+                                    ->maxLength(2048)
+                                    ->reactive()
+                                    ->afterStateUpdated(function (Closure $set, $state) {
+                                        $set('slug', Str::slug($state));
+                                    }),
+                                Forms\Components\TextInput::make('slug')
+                                    ->required()
+                                    ->maxLength(2048),
+                            ]),
 
 
-//
-              
-            Forms\Components\Card::make()
-                 ->schema([
-            Forms\Components\FileUpload::make('thumbnail'),
-            Forms\Components\Select::make('categories')
-                ->multiple()
-                ->relationship('categories', 'title'),
-                         ])->columnSpan(4)
-                    ])->columns(12);
-                }
- //
+                        // Forms\Components\FileUpload::make('thumbnail'),
+                        // ->maxLength(2048),
+                        Forms\Components\RichEditor::make('body')
+                            ->required(),
+                        //CEO
+                        Forms\Components\TextInput::make('meta_title'),
+                        Forms\Components\TextInput::make('meta_description'),
+
+
+
+
+                        Forms\Components\Toggle::make('active')
+                            ->required(),
+                        Forms\Components\DateTimePicker::make('published_at'),
+                        // ->required(),
+
+                        Forms\Components\Select::make('category_id')
+                            ->multiple()
+                            ->relationship('categories', 'title')
+                            ->required(),
+
+                    ])->columnSpan(8),
+
+
+                //
+
+                Forms\Components\Card::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('thumbnail'),
+                        Forms\Components\Select::make('categories')
+                            ->multiple()
+                            ->relationship('categories', 'title'),
+                    ])->columnSpan(4)
+            ])->columns(12);
+    }
+    //
 
 
 
@@ -86,7 +93,7 @@ class PostResource extends Resource
                 Tables\Columns\ImageColumn::make('thumbnail'),
                 Tables\Columns\TextColumn::make('title'),
                 // Tables\Columns\TextColumn::make('slug'),
-               
+
                 // Tables\Columns\TextColumn::make('body'),
                 Tables\Columns\IconColumn::make('active')
                     ->boolean(),
@@ -102,7 +109,7 @@ class PostResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+                // Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
@@ -110,21 +117,20 @@ class PostResource extends Resource
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
-    
+
     public static function getRelations(): array
     {
         return [
             //
         ];
     }
-    
+
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-            'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }    
+    }
 }
