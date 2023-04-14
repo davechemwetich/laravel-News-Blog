@@ -4,47 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $metaTitle ?: 'davenv blog' }}</title>
-    <meta name="author" content="davenv blog">
+    <title>{{ $metaTitle ?: '' }}</title>
+    <meta name="author" content="">
     <meta name="description" content="{{ $metaDescription }}">
-
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-
-        .font-family-karla {
-            font-family: karla;
-        }
-
-
-        pre {
-            padding: 1rem;
-            background-color: black;
-            color: white;
-            border-radius: 0.5rem;
-        }
     </style>
-
 
     <!-- Font Awesome -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
 
     @livewireStyles
-
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
 
-<body class="bg-rose-950 font-family-karla">
+<body class="bg-gray-50 font-family-karla">
 
 
     <!-- Text Header -->
     <header class="w-full container mx-auto">
         <div class="flex flex-col items-center py-12">
-            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5l" href="{{ route('home') }}">
-                davesnews blog
+            <a class="font-bold text-gray-800 uppercase hover:text-gray-700 text-5xl" href="{{ route('home') }}">
+
             </a>
             <p class="text-lg text-gray-600">
                 {{ \App\Models\TextWidget::getTitle('header') }}
@@ -56,7 +40,7 @@
     <nav class="w-full py-4 border-t border-b bg-gray-100" x-data="{ open: false }">
         <div class="block sm:hidden">
             <a href="#"
-                class="block md:hidden text-base font-bold uppercase text-center justify-center items-center"
+                class="md:hidden text-base font-bold uppercase text-center flex justify-center items-center"
                 @click="open = !open">
                 Topics <i :class="open ? 'fa-chevron-down' : 'fa-chevron-up'" class="fas ml-2"></i>
             </a>
@@ -144,3 +128,6 @@
     </footer>
 
     @livewireScripts
+</body>
+
+</html>
