@@ -121,11 +121,25 @@
 
     </div>
 
-    <footer class="w-full border-t bg-white pb-12">
-        <div class="w-full container mx-auto flex flex-col items-center">
-            <div class="uppercase py-6">&copy; myblog.com</div>
+    <footer class="bg-gray-900 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <p class="text-gray-500 text-sm" id="copyright">
+                © <span id="currentYear"></span> Company Name. All rights reserved.
+            </p>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="text-gray-500 hover:text-white transition duration-300">Terms of Use</a>
+                </li>
+                <li><a href="#" class="text-gray-500 hover:text-white transition duration-300">Privacy Policy</a>
+                </li>
+                <li><a href="#" class="text-gray-500 hover:text-white transition duration-300">Contact Us</a></li>
+            </ul>
         </div>
     </footer>
+
+    <script>
+        const currentYear = new Date().getFullYear();
+        document.getElementById("currentYear").textContent = currentYear;
+    </script>
 
     @livewireScripts
 </body>
