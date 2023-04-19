@@ -62,6 +62,6 @@ php artisan make:filament-user
 
 ## Demo
 
-[label](https://blog.dreamhacks.us/)
+> [Demo](https://blog.dreamhacks.us/)
 
 ##
