@@ -60,8 +60,8 @@ php artisan migrate
 php artisan make:filament-user
 ```
 
-## Demo
+## 
 
-> [Demo](https://blog.dreamhacks.us/)
+> [Link](https://blog.dreamhacks.us/)
 
 ##
