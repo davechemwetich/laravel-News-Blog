@@ -14,3 +14,12 @@ pre {
     border-radius: 0.5rem;
     margin-bottom: 1rem;
 }
+
+   /* Add fixed position and high z-index to header element */
+   .sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+  }

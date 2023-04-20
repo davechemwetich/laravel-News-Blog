@@ -138,6 +138,8 @@ class PostController extends Controller
      */
     public function show(Post $post, Request $request)
     {
+        $views = PostView::where('post_id', $post->id)->count();
+
         if (!$post->active || $post->published_at > Carbon::now()) {
             throw new NotFoundHttpException();
         }
@@ -163,10 +165,10 @@ class PostController extends Controller
             'ip_address' => $request->ip(),
             'user_agent' => $request->userAgent(),
             'post_id' => $post->id,
-            'user_id' => $user?->id
+            'user_id' => $user?->id,
         ]);
-
-        return view('post.view', compact('post', 'prev', 'next'));
+        return view('post.view', compact('post', 'prev', 'next', 'views'));
+        // return view('post.view', compact('post', 'prev', 'next'));
     }
 
     public function byCategory(Category $category)

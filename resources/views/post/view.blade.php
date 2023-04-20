@@ -1,17 +1,19 @@
 <x-app-layout :meta-title="$post->meta_title ?: $post->title" :meta-description="$post->meta_description">
-    <div class="flex">
+    <div class="flex flex-col lg:flex-row">
         <!-- Post Section -->
-        <section class="w-full md:w-2/3 flex flex-col px-3">
+        <section class="w-full lg:w-2/3 flex flex-col px-3">
 
             <article class="flex flex-col shadow my-4">
                 <!-- Article Image -->
                 <a href="#" class="hover:opacity-75">
-                    <img src="{{ $post->getThumbnail() }}">
+                    <img src="{{ $post->getThumbnail() }}" class="w-full">
                 </a>
                 <div class="bg-white flex flex-col justify-start p-6">
-                    <div class="flex gap-4">
+                    <div class="flex flex-wrap gap-4 mb-4">
                         @foreach ($post->categories as $category)
-                            <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">
+                            <a data-te-chip-init data-te-ripple-init
+                                class="[word-wrap: break-word] my-[5px] flex h-[32px] cursor-pointer items-center justify-between rounded-[16px] border border-[#58ff0b] bg-[#a915ff] bg-[transparent] px-[12px] py-0 text-[13px] font-normal normal-case leading-loose text-[#4f4f4f] shadow-none transition-[opacity] duration-300 ease-linear hover:border-[#3b71ca] hover:!shadow-none dark:text-neutral-200"
+                                data-te-ripple-color="dark">
                                 {{ $category->title }}
                             </a>
                         @endforeach
@@ -22,9 +24,10 @@
                     <p href="#" class="text-sm pb-8">
                         By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>,
                         Published on
-                        {{ $post->getFormattedDate() }} | {{ $post->human_read_time }}|
+                        {{ $post->getFormattedDate() }} {{ $post->human_read_time }}
+                        <i class="fas fa-eye"></i> {{ $views }}
                     </p>
-                    <div>
+                    <div class="prose max-w-none">
                         {!! $post->body !!}
                     </div>
 
@@ -33,7 +36,7 @@
             </article>
 
             <div class="w-full flex pt-6">
-                <div class="w-1/2">
+                <div class="w-full lg:w-1/2 mb-4 lg:mb-0 lg:pr-2">
                     @if ($prev)
                         <a href="{{ route('view', $prev) }}"
                             class="block w-full bg-white shadow hover:shadow-md text-left p-6">
@@ -45,7 +48,7 @@
                         </a>
                     @endif
                 </div>
-                <div class="w-1/2">
+                <div class="w-full lg:w-1/2 lg:pl-2">
                     @if ($next)
                         <a href="{{ route('view', $next) }}"
                             class="block w-full bg-white shadow hover:shadow-md text-right p-6">
@@ -63,6 +66,6 @@
             <livewire:comments :post="$post" />
         </section>
 
-        <x-sidebar />
+        <x-sidebar class="lg:w-1/3 px-3" />
     </div>
 </x-app-layout>

@@ -1,29 +1,39 @@
-<article class="bg-white    flex flex-col shadow my-4">
+<article class="rounded-sm  p-0.5 shadow-xl transition hover:shadow-sm">
     <!-- Article Image -->
-    <a href="{{ route('view', $post) }}" class="hover:opacity-75">
-        <img src="{{ $post->getThumbnail() }}" alt="{{ $post->title }}" class="aspect-[4/3] object-contain">
+    <a href="{{ route('view', $post) }}" class="flex-shrink-0">
+        <img src="{{ $post->getThumbnail() }}" alt="{{ $post->title }}"
+            class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]" />
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
         <div class="flex gap-4">
             @foreach ($post->categories as $category)
-                <a href="#" class="text-blue-700 text-sm font-bold uppercase pb-4">
+                <a href="#" class="bg-blue-500 text-white p-1 rounded text-xs font-bold uppercase">
                     {{ $category->title }}
                 </a>
             @endforeach
         </div>
-        <a href="{{ route('view', $post) }}" class="text-3xl font-bold hover:text-gray-700 pb-4">
-            {{ $post->title }}
-        </a>
+        <a class="text-base font-bold leading-tight text-gray-800 hover:text-blue-500">
+            {{ $post->title }}</a>
         @if ($showAuthor)
             <p href="#" class="text-sm pb-3">
                 By <a href="#" class="font-semibold hover:text-gray-800">{{ $post->user->name }}</a>, Published on
-                {{ $post->getFormattedDate() }} | {{ $post->human_read_time }} |
+                {{ $post->getFormattedDate() }} {{ $post->human_read_time }}
             </p>
         @endif
-        <a href="{{ route('view', $post) }}" class="pb-6">
-            {{ $post->shortBody() }}
+
+        <a href="{{ route('view', $post) }}" class="mt-2 line-clamp-3 text-sm/relaxed text-gray-500">
+            {{ $post->shortBody(15) }}
         </a>
-        <a href="{{ route('view', $post) }}" class="uppercase text-gray-800 hover:text-black">Continue Reading <i
-                class="fas fa-arrow-right"></i></a>
+
+
+
+        <a href="{{ route('view', $post) }}"
+            class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-blue-600">
+            Find out more
+
+            <span aria-hidden="true" class="block transition-all group-hover:ms-0.5 rtl:rotate-180">
+                &rarr;
+            </span>
+        </a>
     </div>
 </article>
