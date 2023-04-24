@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
+use AskerAkbar\GptTrixEditor\Components\GptTrixEditor;
+
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
@@ -39,8 +41,9 @@ class PostResource extends Resource
                         Forms\Components\TextInput::make('slug')
                             ->required()
                             ->maxLength(2048),
-                        Forms\Components\RichEditor::make('body')
-                            ->required(),
+                        // Forms\Components\RichEditor::make('body')
+                        //     ->required(),
+                        GptTrixEditor::make('body')->columnSpan('full'),
                         Forms\Components\TextInput::make('meta_title')
                             ->maxLength(255),
                         Forms\Components\Textarea::make('meta_description')

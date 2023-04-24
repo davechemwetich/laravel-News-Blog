@@ -159,17 +159,16 @@
     </div>
 
 
-    <footer class=" py-4 container mx-auto">
-        <div class="container mx-auto flex justify-between items-center">
-            <p class="text-gray-500 text-sm" id="copyright">
+    <footer class="py-4 container mx-auto">
+        <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+            <p class="text-gray-500 text-sm mb-2 lg:mb-0" id="copyright">
                 © <span id="currentYear"></span> Company Name. All rights reserved.
             </p>
-            <ul class="flex space-x-4">
+            <ul class="flex flex-wrap lg:flex-nowrap space-x-4">
                 <li><a href="#" class="text-gray-500 hover:text-white transition duration-300">Terms of Use</a>
                 </li>
                 <li><a href="#" class="text-gray-500 hover:text-white transition duration-300">Privacy
-                        Policy</a>
-                </li>
+                        Policy</a></li>
                 <li><a href="#" class="text-gray-500 hover:text-white transition duration-300">Contact Us</a>
                 </li>
             </ul>
