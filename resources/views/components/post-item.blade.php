@@ -2,7 +2,7 @@
     <!-- Article Image -->
     <a href="{{ route('view', $post) }}" class="flex-shrink-0">
         <img src="{{ $post->getThumbnail() }}" alt="{{ $post->title }}"
-            class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]" />
+            class="h-30 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]" />
     </a>
     <div class="bg-white flex flex-col justify-start p-6">
         <div class="flex gap-4">

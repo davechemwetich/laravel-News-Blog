@@ -176,7 +176,11 @@
     </footer>
 
     @livewireScripts
-
+    <div x-data="{ showScroll: false }" x-init="showScroll = window.scrollY > 100">
+        <a href="#" x-show="showScroll" x-on:click.prevent="scrollToTop">
+            Scroll to Top
+        </a>
+    </div>
 </body>
 
 </html>

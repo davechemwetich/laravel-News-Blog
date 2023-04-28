@@ -26,7 +26,7 @@
                         <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
                             <a href="{{ route('view', $post) }}" class="flex-shrink-0">
                                 <img src="{{ $post->getThumbnail() }}" alt="{{ $post->title }}"
-                                    class="h-56 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]" />
+                                    class="h-61 w-full rounded-xl object-cover shadow-xl transition group-hover:grayscale-[50%]" />
                             </a>
                             <div class="flex flex-col justify-between py-2 px-3">
                                 <a href="{{ route('view', $post) }}">
@@ -51,17 +51,19 @@
 
 
         <!-- Recommended posts -->
-        <div class="mb-8">
-            <strong class="text-sm font-bold text-blue-500 uppercase pb-1 border-b-2 border-blue-500 mb-3">
-                Recomended Posts
-            </strong>
 
-            <div class="grid grid-cols-4 gap-4">
+        <div class="mb-8">
+            <h2 class="text-lg font-bold text-gray-700">Recommended Posts</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                 @foreach ($recommendedPosts as $post)
-                    <x-post-item :post="$post" :show-author="false" />
+                    <x-post-item :post="$post" :show-author="false"
+                        class="bg-white rounded-lg shadow-md overflow-hidden" />
                 @endforeach
             </div>
         </div>
+
+
 
         <!-- Latest Categories -->
 

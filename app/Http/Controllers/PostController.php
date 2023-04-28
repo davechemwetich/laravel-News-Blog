@@ -168,7 +168,6 @@ class PostController extends Controller
             'user_id' => $user?->id,
         ]);
         return view('post.view', compact('post', 'prev', 'next', 'views'));
-        // return view('post.view', compact('post', 'prev', 'next'));
     }
 
     public function byCategory(Category $category)

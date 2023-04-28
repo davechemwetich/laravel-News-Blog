@@ -39,3 +39,5 @@ Route::get('/sitemap.xml', function () {
     return response()->view('user.sitemap')
         ->header('Content-Type', 'xml');
 });
+
+Route::get('/youtube', [YoutubeController::class, 'getChannelData']);

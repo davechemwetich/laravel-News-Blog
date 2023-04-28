@@ -30,7 +30,7 @@
         </a>
     </div>
 
-
+ 
 
     <div class="w-full bg-white block rounded-xl border border-gray-800  p-4 shadow-xl sm:p-6 lg:p-8">
         <a href="#" class="group relative block overflow-hidden">
