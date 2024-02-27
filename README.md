@@ -8,7 +8,7 @@ This is Laravel 10 blog starter kit project with [Filament PHP](https://filament
 #### 1. Clone the project
 
 ```bash
-git clone https://github.com/xxxxxxxxxxxxx.git
+git clone https://github.com/davechemwetich/laravel-News-Blog.git
 ```
 
 #### 2. Run `composer install`
